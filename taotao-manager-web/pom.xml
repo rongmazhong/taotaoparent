@@ -99,6 +99,11 @@
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
         </dependency>
+        <!--警告: Hessian/Burlap: 'com.github.pagehelper.Page' is an unknown class in WebappClassLoader-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
