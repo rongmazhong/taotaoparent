@@ -12,6 +12,7 @@
         <module>taotao-manager</module>
         <module>taotao-manager-web</module>
         <module>mybatis-generator</module>
+        <module>taotao-portal-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义版本号 -->
