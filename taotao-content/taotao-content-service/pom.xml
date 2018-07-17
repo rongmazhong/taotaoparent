@@ -25,8 +25,22 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sha</groupId>
+            <artifactId>taotao-content-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sha</groupId>
+            <artifactId>taotao-manager-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sha</groupId>
+            <artifactId>taotao-manager-pojo</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- Spring -->
         <dependency>
