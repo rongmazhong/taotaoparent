@@ -30,6 +30,11 @@
         </dependency>
         <dependency>
             <groupId>com.sha</groupId>
+            <artifactId>taotao-content-interface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sha</groupId>
             <artifactId>taotao-manager-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

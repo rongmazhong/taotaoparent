@@ -3,6 +3,8 @@ package com.taotao.content.service;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbContent;
 
+import java.util.List;
+
 /**
  * 〈商品内容服务〉
  *
@@ -18,4 +20,6 @@ public interface ContentService {
      * @date 2018/8/8 20:04
      */
     TaotaoResult addContent(TbContent content);
+
+    List<TbContent> getContentByCid(Long cid);
 }
