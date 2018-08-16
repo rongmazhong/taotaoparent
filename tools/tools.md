@@ -62,15 +62,17 @@ docker start tracker
     docker pull ruby   
     # 1、创建redis配置文件（redis-cluster.tmpl）
        ## 在路径/home/docker/redis-cluster下创建一个文件redis-cluster.tmpl  
-       port ${PORT}
-       protected-mode no
-       cluster-enabled yes
-       cluster-config-file nodes.conf
-       cluster-node-timeout 5000
-       cluster-announce-ip 39.10X.XX.XX //自己服务器IP
-       cluster-announce-port ${PORT}
-       cluster-announce-bus-port 1${PORT}
-       appendonly yes
+        
+        ###  port ${PORT}
+        ###  protected-mode no
+        ###  cluster-enabled yes
+        ###  cluster-config-file nodes.conf
+        ###  cluster-node-timeout 5000
+        ###  cluster-announce-ip 39.10X.XX.XX //自己服务器IP
+        ###  cluster-announce-port ${PORT}
+        ###  cluster-announce-bus-port 1${PORT}
+        ###  appendonly yes
+     
     # 2、创建自定义network  
        docker network create redis-net
     # 3、创建容器
