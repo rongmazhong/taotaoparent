@@ -123,3 +123,4 @@ docker cp /home/docker/managed-schema  my_chinese_solr:/opt/solr/server/solr/get
 docker stop my_chinese_solr
 docker start my_chinese_solr
 ```     
+
