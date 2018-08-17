@@ -88,8 +88,8 @@ docker start tracker
 
 docker redis 自动运行
 
-## solr
-- 安装     
+## solr 
+- 安装    [参考资料1](https://c.163yun.com/hub#/m/repository/?repoId=3540)  [参考资料2](https://hub.docker.com/r/supermy/docker-solr/) 
     ```bash
     docker search solr
     docker pull hub.c.163.com/library/solr:latest
@@ -97,13 +97,29 @@ docker redis 自动运行
     docker ps -a
     docker container ls
     ip add
+    ## 访问 http://ip:8983/      
+    ## 创建集合
+    docker exec -it --user=solr my_solr bin/solr create_core -c gettingstarted
+    
     ```   
-    访问 http://ip:8983/      
-      
+- [中文分词](https://github.com/zxiaofan/ik-analyzer-solr6/releases)
+    
 - docker solr 在10.0.0.70服务器， 
 ```bash
- start my_solr 
+ start my_chinese_solr
 ```   
 [solr网页管理端](http://10.0.0.70:8983/solr/#/)  
 
-  
+- 备份使用
+```bash
+    docker pull rongmazhong/my_chinese_solr
+    docker run --name my_chinese_solr -d -p 8983:8983 -t rongmazhong/my_chinese_solr 
+```   
+只有core1有中文分词。
+可以修改managed-schema内容，权限改为8983：8983，再cp到容器中。
+```bash
+sudo chown 8983:8983 managed-schema
+docker cp /home/docker/managed-schema  my_chinese_solr:/opt/solr/server/solr/gettingstarted/conf/managed-schema
+docker stop my_chinese_solr
+docker start my_chinese_solr
+```     
