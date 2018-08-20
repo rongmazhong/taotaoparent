@@ -8,6 +8,7 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -40,7 +41,11 @@ public class SearchDao {
             SearchItem searchItem = new SearchItem();
             searchItem.setCategoryName(String.valueOf(document.get("item_category_name")));
             searchItem.setId(String.valueOf(document.get("id")));
-            searchItem.setImage((String) document.get("item_image"));
+            String image = (String) document.get("item_image");
+            if (org.apache.commons.lang3.StringUtils.isNotEmpty(image)) {
+                image = image.split(",")[0];
+            }
+            searchItem.setImage(image);
             searchItem.setPrice((Long) document.get("item_price"));
             searchItem.setSellPoint((String) document.get("item_sell_point"));
             // 取高亮显示
