@@ -11,7 +11,9 @@
 3.8  查看节点内容  get /zk/testnode
 3.9  设置节点内容  set /zk/testnode abc
 4.0  删除节点      delete /zk/testnode
-```     
+```   
+
+可在/home/dubbo/下 使用./zookeeper status查看服务状态  
 ## docker fastdfs  
 - 安装  [参考资料](https://blog.csdn.net/lizhihaooo/article/details/79261388)  
     ```bash
@@ -123,4 +125,3 @@ docker cp /home/docker/managed-schema  my_chinese_solr:/opt/solr/server/solr/get
 docker stop my_chinese_solr
 docker start my_chinese_solr
 ```     
-

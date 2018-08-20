@@ -1,0 +1,21 @@
+# 启停、查看zookeeper服务
+case $1 in
+start)
+    echo  -n "启动 zookeeper ... "
+    /usr/local/zookeeper-3.4.10/bin/zkServer.sh start
+    ;;
+stop)
+    echo -n "Stopping zookeeper ... "
+    /usr/local/zookeeper-3.4.10/bin/zkServer.sh stop
+    ;;
+restart)
+    echo -n "重启 zookeeper ... "
+    /usr/local/zookeeper-3.4.10/bin/zkServer.sh restart
+    ;;
+status)
+    echo -n "查看zookeeper状态 ... "
+    /usr/local/zookeeper-3.4.10/bin/zkServer.sh status
+    ;;
+*)
+    echo "请使用: $0 {start|start-foreground|stop|restart|status|upgrade|print-cmd}" >&2
+esac
