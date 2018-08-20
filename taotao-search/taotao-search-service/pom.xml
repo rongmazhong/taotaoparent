@@ -19,6 +19,11 @@
         </dependency>
         <dependency>
             <groupId>com.sha</groupId>
+            <artifactId>taotao-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sha</groupId>
             <artifactId>taotao-search-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -88,6 +93,10 @@
         <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
         </dependency>
     </dependencies>
     <build>
