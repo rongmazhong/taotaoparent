@@ -13,7 +13,7 @@
 4.0  删除节点      delete /zk/testnode
 ```   
 
-可在/home/dubbo/下 使用./zookeeper status查看服务状态  
+可在/home/dubbo/下 使用systemctl status zookeeper.service (或者./zookeeper status)查看服务状态  
 ## docker fastdfs  
 - 安装  [参考资料](https://blog.csdn.net/lizhihaooo/article/details/79261388)  
     ```bash
@@ -89,7 +89,7 @@ docker start tracker
 ![run-redis-success](./imgs/run-success-redis.png)
 
 docker redis 自动运行
-
+docker container ls查看运行状态
 ## solr 
 - 安装    [参考资料1](https://c.163yun.com/hub#/m/repository/?repoId=3540)  [参考资料2](https://hub.docker.com/r/supermy/docker-solr/) 
     ```bash
