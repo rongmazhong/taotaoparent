@@ -1,4 +1,4 @@
-## 启动zookeeper      
+## 启动zookeeper  (dubbo-zookeeper)    
 ```bash
 3 常用命令
 3.1. 启动ZK服务:        bin/zkServer.sh start
@@ -14,7 +14,7 @@
 ```   
 
 可在/home/dubbo/下 使用systemctl status zookeeper.service (或者./zookeeper status)查看服务状态  
-## docker fastdfs  
+## docker fastdfs  (docker-fastdfs)
 - 安装  [参考资料](https://blog.csdn.net/lizhihaooo/article/details/79261388)  
     ```bash
     # 拉取镜像
@@ -57,7 +57,7 @@
 docker start storage
 docker start tracker 
 ```    
-## docker redis 集群
+## docker redis 集群 (docker-redis)
 - 安装  [参考资料](https://www.cnblogs.com/lianggp/articles/8136222.html) 
 ```bash
     docker pull redis   
@@ -90,7 +90,7 @@ docker start tracker
 
 docker redis 自动运行
 docker container ls查看运行状态
-## solr 
+## docker solr (docker-fastdfs) 
 - 安装    [参考资料1](https://c.163yun.com/hub#/m/repository/?repoId=3540)  [参考资料2](https://hub.docker.com/r/supermy/docker-solr/) 
     ```bash
     docker search solr
@@ -125,3 +125,9 @@ docker cp /home/docker/managed-schema  my_chinese_solr:/opt/solr/server/solr/get
 docker stop my_chinese_solr
 docker start my_chinese_solr
 ```     
+## docker ActiveMq (docker-fastdfs)  
+[docker hub 文档地址](https://hub.docker.com/r/webcenter/activemq/)    
+docker pull webcenter/activemq      
+docker images       
+docker run -d --name myactivemq -p 8161:8161 -p 61616:61616 -p 61613:61613 webcenter/activemq:latest
+
