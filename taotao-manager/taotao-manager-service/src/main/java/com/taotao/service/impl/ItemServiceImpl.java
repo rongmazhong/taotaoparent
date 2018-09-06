@@ -50,7 +50,7 @@ public class ItemServiceImpl implements ItemService {
         PageHelper.startPage(start, size);
         //执行查询
         TbItemExample example = new TbItemExample();
-        List<TbItem> list =  itemMapper.selectByExample(example);
+        List<TbItem> list = itemMapper.selectByExample(example);
         // 取查询结果
         PageInfo<TbItem> pageInfo = new PageInfo<>(list);
         EasyUIDataGridResult result = new EasyUIDataGridResult();
@@ -62,7 +62,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public TaotaoResult addItem(TbItem item, String desc) {
         // 生成商品id
-        Long itemId =  IDUtils.genItemId();
+        Long itemId = IDUtils.genItemId();
         // 补全item的属性
         item.setId(itemId);
         //商品状态，1-正常，2-下架，3-删除
@@ -81,18 +81,17 @@ public class ItemServiceImpl implements ItemService {
         // 向商品描述表插入数据
         itemDescMapper.insert(itemDesc);
         this.sendMsg(itemId);
-        // jmsTemplate.send(destination, new MessageCreator() {
-        //     @Override
-        //     public Message createMessage(Session session) throws JMSException {
-        //         TextMessage textMessage = session.createTextMessage(itemId + "");
-        //         return textMessage;
-        //     }
-        // });
         //返回结果
         return TaotaoResult.ok();
     }
+
+    @Override
+    public TbItemDesc getItemDescById(long itemId) {
+        return itemDescMapper.selectByPrimaryKey(itemId);
+    }
+
     private void sendMsg(long itemId) {
         // 向activemq发送消息
-        jmsTemplate.send(destination,session -> session.createTextMessage(itemId +""));
+        jmsTemplate.send(destination, session -> session.createTextMessage(itemId + ""));
     }
 }
