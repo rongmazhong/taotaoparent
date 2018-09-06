@@ -38,18 +38,20 @@ public class ItemAddMessageListener implements MessageListener {
             // 等待事务提交
             Thread.sleep(1000);
             SearchItem item = searchItemMapper.getItemById(itemId);
-            // 通过solr写入索引库
-            SolrInputDocument document = new SolrInputDocument();
-            document.addField("id",item.getId());
-            document.addField("item_title",item.getTitle());
-            document.addField("item_sell_point",item.getSellPoint());
-            document.addField("item_price",item.getPrice());
-            document.addField("item_image",item.getImage());
-            document.addField("item_category_name",item.getCategoryName());
-            document.addField("item_desc",item.getItemDesc());
-            solrClient.add(document);
-            //提交
-            solrClient.commit();
+            if (item != null) {
+                // 通过solr写入索引库
+                SolrInputDocument document = new SolrInputDocument();
+                document.addField("id",item.getId());
+                document.addField("item_title",item.getTitle());
+                document.addField("item_sell_point",item.getSellPoint());
+                document.addField("item_price",item.getPrice());
+                document.addField("item_image",item.getImage());
+                document.addField("item_category_name",item.getCategoryName());
+                document.addField("item_desc",item.getItemDesc());
+                solrClient.add(document);
+                //提交
+                solrClient.commit();
+            }
             System.out.println("======>>>>>>成功添加商品到索引库");
         } catch (JMSException e) {
             e.printStackTrace();

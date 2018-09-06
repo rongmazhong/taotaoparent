@@ -13,11 +13,10 @@ import com.taotao.pojo.TbItemExample;
 import com.taotao.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.jms.*;
+import javax.jms.Destination;
 import java.util.Date;
 import java.util.List;
 
@@ -81,8 +80,7 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setUpdated(new Date());
         // 向商品描述表插入数据
         itemDescMapper.insert(itemDesc);
-        // 向activemq发送消息
-        jmsTemplate.send(destination,session -> session.createTextMessage(itemId +""));
+        this.sendMsg(itemId);
         // jmsTemplate.send(destination, new MessageCreator() {
         //     @Override
         //     public Message createMessage(Session session) throws JMSException {
@@ -92,6 +90,9 @@ public class ItemServiceImpl implements ItemService {
         // });
         //返回结果
         return TaotaoResult.ok();
-
+    }
+    private void sendMsg(long itemId) {
+        // 向activemq发送消息
+        jmsTemplate.send(destination,session -> session.createTextMessage(itemId +""));
     }
 }
