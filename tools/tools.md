@@ -1,4 +1,5 @@
 # 项目资料
+启动所有用到的虚拟机，zookeeper自动启动、redis自动启动、docker-fastdfs-solr-activemq中需./start.sh启动所有实例。
 
 ## 启动zookeeper  (dubbo-zookeeper)    
 ```bash
