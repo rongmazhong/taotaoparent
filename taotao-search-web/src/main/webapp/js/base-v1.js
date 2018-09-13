@@ -2,10 +2,10 @@
  Date: 2014-01-21 
  */
 function login() {
-    return location.href = "http://localhost:8084/user/showLogin";
+    return location.href = "http://localhost:18084/user/showLogin";
 }
 function regist() {
-    return location.href = "http://localhost:8084/user/showRegister";
+    return location.href = "http://localhost:18084/user/showRegister";
 }
 function createCookie(a, b, c, d) {
     var d = d ? d : "/";

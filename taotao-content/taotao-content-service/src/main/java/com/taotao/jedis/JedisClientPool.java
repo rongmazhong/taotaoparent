@@ -1,7 +1,6 @@
 package com.taotao.jedis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -80,6 +79,14 @@ public class JedisClientPool implements JedisClient {
 		Long result = jedis.hdel(key, field);
 		jedis.close();
 		return result;
+	}
+
+	@Override
+	public Long del(String key) {
+		Jedis jedis = jedisPool.getResource();
+		Long del = jedis.del(key);
+		jedis.close();
+		return del;
 	}
 
 }
