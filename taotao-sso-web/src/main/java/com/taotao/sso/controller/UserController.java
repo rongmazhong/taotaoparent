@@ -2,10 +2,14 @@ package com.taotao.sso.controller;
 
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.CookieUtils;
+import com.taotao.common.utils.JsonUtils;
 import com.taotao.pojo.TbUser;
 import com.taotao.sso.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,14 +59,38 @@ public class UserController {
     @ResponseBody
     public TaotaoResult login(String username, String password, HttpServletResponse response, HttpServletRequest request) {
         TaotaoResult login = userService.login(username, password);
-        // 把token写入cookie
-        CookieUtils.setCookie(request, response,TOKEN_KEY,login.getData().toString());
+        if (login.getStatus().equals(200)) {
+            // 把token写入cookie
+            CookieUtils.setCookie(request, response,TOKEN_KEY,login.getData().toString());
+        }
         return login;
     }
+    // @RequestMapping(value = "/token/{token}",method = RequestMethod.GET,
+    //         // 指定返回响应数据的Content-type
+    //          produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    // @ResponseBody
+    // public String getUserByToken(@PathVariable String token,String callback) {
+    //     TaotaoResult user = userService.getUserByToken(token);
+    //     // 判断是否为jsonp请求
+    //     if (StringUtils.isNotBlank(callback)) {
+    //         return callback + "(" + JsonUtils.objectToJson(user) + ");";
+    //     }
+    //     return JsonUtils.objectToJson(user);
+    // }
+
+    /**
+     * jsonp的第二种方法，spring4.1以上版本使用
+     */
     @RequestMapping(value = "/token/{token}",method = RequestMethod.GET)
     @ResponseBody
-    public TaotaoResult getUserByToken(String token) {
+    public Object getUserByToken(@PathVariable String token,String callback) {
         TaotaoResult user = userService.getUserByToken(token);
+        // 判断是否为jsonp请求
+        if (StringUtils.isNotBlank(callback)) {
+            MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(user);
+            mappingJacksonValue.setJsonpFunction(callback);
+            return mappingJacksonValue;
+        }
         return user;
     }
 
