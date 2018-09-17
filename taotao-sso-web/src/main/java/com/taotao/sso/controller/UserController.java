@@ -65,7 +65,7 @@ public class UserController {
         }
         return login;
     }
-    // @RequestMapping(value = "/token/{token}",method = RequestMethod.GET,
+    // @RequestMapping(value = "/user/token/{token}",method = RequestMethod.GET,
     //         // 指定返回响应数据的Content-type
     //          produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     // @ResponseBody
@@ -81,7 +81,7 @@ public class UserController {
     /**
      * jsonp的第二种方法，spring4.1以上版本使用
      */
-    @RequestMapping(value = "/token/{token}",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/token/{token}",method = RequestMethod.GET)
     @ResponseBody
     public Object getUserByToken(@PathVariable String token,String callback) {
         TaotaoResult user = userService.getUserByToken(token);
