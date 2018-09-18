@@ -65,18 +65,18 @@ public class UserController {
         }
         return login;
     }
-    // @RequestMapping(value = "/user/token/{token}",method = RequestMethod.GET,
-    //         // 指定返回响应数据的Content-type
-    //          produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    // @ResponseBody
-    // public String getUserByToken(@PathVariable String token,String callback) {
-    //     TaotaoResult user = userService.getUserByToken(token);
-    //     // 判断是否为jsonp请求
-    //     if (StringUtils.isNotBlank(callback)) {
-    //         return callback + "(" + JsonUtils.objectToJson(user) + ");";
-    //     }
-    //     return JsonUtils.objectToJson(user);
-    // }
+    /*@RequestMapping(value = "/user/token/{token}",method = RequestMethod.GET,
+            // 指定返回响应数据的Content-type
+             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public String getUserByToken(@PathVariable String token,String callback) {
+        TaotaoResult user = userService.getUserByToken(token);
+        // 判断是否为jsonp请求
+        if (StringUtils.isNotBlank(callback)) {
+            return callback + "(" + JsonUtils.objectToJson(user) + ");";
+        }
+        return JsonUtils.objectToJson(user);
+    }*/
 
     /**
      * jsonp的第二种方法，spring4.1以上版本使用
