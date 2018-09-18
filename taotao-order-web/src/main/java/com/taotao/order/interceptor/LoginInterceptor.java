@@ -2,6 +2,8 @@ package com.taotao.order.interceptor;
 
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.CookieUtils;
+import com.taotao.common.utils.JsonUtils;
+import com.taotao.pojo.TbUser;
 import com.taotao.sso.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +48,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             // 拦截
             return false;
         }
-        TaotaoResult user = userService.getUserByToken(token);
-        if (user.getStatus() != 200) {
+        TaotaoResult result = userService.getUserByToken(token);
+        if (result.getStatus() != 200) {
             // 取当前请求的url
             String url = request.getRequestURL().toString();
             // 跳转到登陆页面
@@ -55,6 +57,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             // 拦截
             return false;
         }
+        TbUser user = (TbUser) result.getData();
+        request.setAttribute("user", user);
         return false;
     }
 
