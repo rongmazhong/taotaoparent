@@ -134,3 +134,7 @@ docker pull webcenter/activemq
 docker images       
 docker run -d --name myactivemq -p 8161:8161 -p 61616:61616 -p 61613:61613 webcenter/activemq:latest
 
+## docker kafka(docker-kafka)
+[参考资料](https://www.jianshu.com/p/37d0d22cb6cc)
+
+
